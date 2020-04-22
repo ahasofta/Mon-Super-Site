@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace partenaire{% endblock %}
+
+{% block body %}
+
+<div class="container p-2 my-3 mt-4">
+{% if app.user %} 
+<h1>Bienvenu !&nbsp;{{ app.user.username }}</h1> 
+{% endif %} 
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+{% if app.user %} 
+<div class="container mt-4">
+<h4>Consulter vos prochains rendez-vous</h4>
+<br>
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'rdz')">Rendez-vous à venir</button>
+  <button class="tablinks" onclick="openCity(event, 'hist')">Historique de rendez-vous</button>
+  <button class="tablinks" onclick="openCity(event, 'medecin')">Medecins</button>
+  <button class="tablinks" onclick="openCity(event, 'beneficiaire')">Bénéficiaire</button>
+</div>
+
+<div id="rdz" class="tabcontent">
+  <h5>Rendez-vous à venir</h5>
+  <p><smallclass="fa fa-user-md">rendez-vous à venir</small>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Naissance</th>
+          <th scope="col">date rendez-vous</th>
+          <th scope="col">Mutuelle</th>
+          <th scope="col">Paiement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">01</th>
+          <td>Said</td>
+          <td>Ali</td>
+          <td>14/12/2020</td>
+          <td>15-05-2021</td>
+          <td>COMORES TELECOM</td>
+          <td>5000 kfm</td>
+        </tr>
+        <tr>
+          <th scope="row">02</th>
+          <td>Ahmed</td>
+          <td>Attoumane</td>
+          <td>14/10/1999</td>
+          <td>05-04-2021</td>
+          <td>BDC</td>
+          <td>6000 kfm</td>
+        </tr>
+        <tr>
+          <th scope="row">03</th>
+          <td>Roukia</td>
+          <td>Ahamadou</td>
+          <td>06/11/1871</td>
+          <td>04-01-2021</td>
+          <td>Sans mutuelle</td>
+          <td>3000 kfm</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
+  
+  </p>
+</div>
+
+<div id="hist" class="tabcontent">
+  <h5>Historique de rendez-vous</h5>
+  <p><small>Aucun patient n'a pris de rendez-vous</small> </p> 
+</div>
+
+<div id="medecin" class="tabcontent">
+  <h5>Medecin</h5>
+  <p><small>Listes de nos médecins</small>
+    <select class="container form-control">
+      <option value="1">choisir un medecin</option>
+      <option value="2">Dr.Ahmed Ali</option>
+      <option value="3">Dr.Djabir Hassane</option>
+      <option value="4">Dr.Djamaldine Youssouf</option>
+    </select>
+  <br><br><br>
+  </p>
+</div>
+<div id="beneficiaire" class="tabcontent">
+  <h5>Listes des bénéficiaires</h5>
+  <p><small>Listes de nos bénéficieres</small>
+    <select class="form-control">
+      <option value="1">Selectionnez votre bénéficiaire</option>
+      <option value="2">COMORES TELECOM</option>
+      <option value="3">BDC</option>
+      <option value="4">NASSIB</option>
+    </select>
+  <br><br><br>
+  </p>
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</div>
+{% endif %} 
+</body>
+</html> 
+
+{% endblock %}
