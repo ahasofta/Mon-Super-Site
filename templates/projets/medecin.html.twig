@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace medecin{% endblock %}
+
+{% block body %}
+
+<div class="container p-2 my-3 mt-4">
+{% if app.user %} 
+<h1>Bienvenu !&nbsp;{{ app.user.username }}</h1> 
+{% endif %} 
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+@media only screen and (max-width: 700px) {
+  table,thead,tbody,tr,th,td{
+    display: block;
+  }
+  td{
+    padding-left: 150px;
+    position: relative;
+  }
+}
+</style>
+</head>
+<body>
+  {% if app.user %} 
+<div class="container mt-4">
+<h4>Consulter vos prochains rendez-vous</h4>
+<br>
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">Rendez-vous à venir</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Historique de rendez-vous</button>
+  
+</div>
+
+<div id="London" class="tabcontent">
+  <h5>Rendez-vous à venir</h5>
+  <p><smallclass="fa fa-user-md">Le  07 - 04 - 2020</small>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">N°ID</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Naissance</th>
+          <th scope="col">date rendez-vous</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Ville</th>
+          <th scope="col">Quartier</th>
+          <th scope="col">Mutuelle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">01</th>
+          <td>M</td>
+          <td>Said</td>
+          <td>Ali</td>
+          <td>14/12/2020</td>
+          <td>15-05-2021</td>
+          <td>337 85 79</td>         
+          <td>Moroni</td>
+          <td>Hadoudja</td>
+          <td>Comores telecom</td>
+        </tr>
+        <tr>
+          <th scope="row">02</th>
+          <td>M</td>
+          <td>Ahmed</td>
+          <td>Attoumane</td>
+          <td>14/10/1999</td>
+          <td>05-04-2021</td>
+          <td>478 96 87</td>
+          <td>Moroni</td>
+          <td>Hancounou</td>
+          <td>BDC</td>
+          
+          
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
+  </p>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h5>Historique de rendez-vous</h5>
+  <p><small>Aucun patient n'a pris de rendez-vous</small> </p> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</div>
+{% endif %} 
+</body>
+</html> 
+
+{% endblock %}
