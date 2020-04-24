@@ -18,9 +18,11 @@ class MedecinController extends Controller
      * @Route("/admin/new/medecin", name="create_ActionMedecin")
      */
     public function ActionMedcin (Request $request, Medecin $medecin=NULL, ObjectManager $manger){
+        
         if (!$medecin) {
             $medecin = new Medecin();
         }
+        
         $form = $this->createForm(MedecinType::class, $medecin);
         $form->handleRequest($request);  
         
@@ -56,5 +58,14 @@ class MedecinController extends Controller
         return $this->render("medecin/show.html.twig",[
             'medecin'=>$medecin
         ]);
+    }
+    /**
+     * @Route("admin/medecin/{id}/delete" name="medecin_delete")
+     */
+    public function delete(Medecin $medecin,ObjectManager $manger){
+
+       $manger->remove($medecin);
+       $manger->flush();
+       return $this->redirectToRoute("medecins_list");
     }
 }
