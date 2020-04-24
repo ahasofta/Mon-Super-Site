@@ -1,20 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdministController!{% endblock %}
+{% block title %}Administateur{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container mt-4">
+<h1>Espace Administateur</h1>
+<br>
+<h5>Liste des medecins</h5>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Laragon/www/perso/src/Controller/AdministController.php'|file_link(0) }}">src/Controller/AdministController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Laragon/www/perso/templates/administ/index.html.twig'|file_link(0) }}">templates/administ/index.html.twig</a></code></li>
-    </ul>
+<table class="table table-triped"><table class="table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Spécialité</th>
+      <th scope="col">Localisation</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">01</th>
+      <td>Hassane</td>
+      <td>Abdallah</td>
+      <th>Medecine interne</th>
+      <td>Moroni Coulée</td>
+      <td><a href="#" class="btn btn-secondary">Editer</a>
+      <a href="#" class="btn btn-danger">Supprimer</a>
+      </td>
+      
+    </tr>
+     <tr>
+      <th scope="row">02</th>
+      <td>Tadjidine</td>
+      <td>Ahmed</td>
+      <th>Medecine generale</th>
+      <td>Moroni Kaltex</td>
+      <td><a href="#" class="btn btn-secondary">Editer</a>
+      <a href="#" class="btn btn-danger">Supprimer</a>
+      </td>
+    </tr>
+     <tr>
+      <th scope="row">03</th>
+      <td>Djamaldine</td>
+      <td>Said</td>
+      <th>Chirurgie</th>
+      <td>Moroni Coulée</td>
+      <td><a href="#" class="btn btn-secondary">Editer</a>
+      <a href="#" class="btn btn-danger">Supprimer</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
 {% endblock %}
