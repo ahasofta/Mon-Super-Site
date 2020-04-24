@@ -60,7 +60,7 @@ class MedecinController extends Controller
         ]);
     }
     /**
-     * @Route("admin/medecin/{id}/delete" name="medecin_delete")
+     * @Route("admin/medecin/{id}/delete" ,name="medecin_delete")
      */
     public function delete(Medecin $medecin,ObjectManager $manger){
 
