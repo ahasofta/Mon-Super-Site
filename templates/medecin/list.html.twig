@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block title %}Service |liste des medecins{% endblock %}
+{% block body %}
+<h1>la liste des utilisateurs<h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Specialiste</th>
+                <th scope="col">Localisation</th>
+                <th scope="col">utilisateur</th>
+                <th scope="col">patients</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <th scope="row">{{medecin.id}}</th>
+                <td>{{medecin.nom_med}}</td>
+                <td>{{medecin.prenom_med}}</td>
+                <td>{{medecin.specialiste}}</td>
+                <td>{{medecin.localisation}}</td>
+                <td>{{medecin.visualiser}}</td>
+                <td>{{medecin.patients}}</td>
+                <td>
+                    <a href="#">modifier</a>
+                    <a href="#">voir</a>
+                    <a href="#">supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            
+        
+        </tbody>
+    </table>
+
+{% endblock %}
