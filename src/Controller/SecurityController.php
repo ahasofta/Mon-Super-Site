@@ -13,15 +13,6 @@ class SecurityController extends AbstractController
     /**
 =======
 {    
-    
-    /**
-     * @Route("/administateur", name="administrateur")
-     */
-    public function dehashbord(){
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
-    }
     /**
 >>>>>>> amadi
      * @Route("/", name="login")
