@@ -38,20 +38,7 @@ class Medecin
      */
     private $localisation;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
-     */
-    private $visualiser;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Patient", mappedBy="consulter")
-     */
-    private $patients;
-
-    public function __construct()
-    {
-        $this->patients = new ArrayCollection();
-    }
+   
 
     public function getId(): ?int
     {
@@ -106,43 +93,4 @@ class Medecin
         return $this;
     }
 
-    public function getVisualiser(): ?User
-    {
-        return $this->visualiser;
-    }
-
-    public function setVisualiser(?User $visualiser): self
-    {
-        $this->visualiser = $visualiser;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Patient[]
-     */
-    public function getPatients(): Collection
-    {
-        return $this->patients;
-    }
-
-    public function addPatient(Patient $patient): self
-    {
-        if (!$this->patients->contains($patient)) {
-            $this->patients[] = $patient;
-            $patient->addConsulter($this);
-        }
-
-        return $this;
-    }
-
-    public function removePatient(Patient $patient): self
-    {
-        if ($this->patients->contains($patient)) {
-            $this->patients->removeElement($patient);
-            $patient->removeConsulter($this);
-        }
-
-        return $this;
-    }
 }

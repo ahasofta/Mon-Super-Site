@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block title %}Service |liste des medecins{% endblock %}
+{% block body %}
+<h1>la liste des utilisateurs<h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">num rendez-vous</th>
+                <th scope="col">genre</th>
+                <th scope="col">nom patient</th>
+                <th scope="col">prenom patient</th>
+                <th scope="col">date naiss</th>
+                <th scope="col">mutuelle</th>
+                <th scope="col">date rendez</th>
+                <th scope="col">ville</th>
+                <th scope="col">quartier</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+                <th scope="row">{{patient.id}}</th>
+                <td>{{patient.getNumUniqueRdz()}}</td>
+                <td>{{patient.getGenre()}}</td>
+                <td>{{patient.getNomPatient()}}</td>
+                <td>{{patient.getPrenomPatient()}}</td>
+                <td>{{patient.getDateNaissance()| date('d/m/Y')}}</td>
+                <td>{{patient.getMutuelle()}}</td>
+                <td>{{patient.getDateRdz()|date('d/m/Y')}}</td>
+                <td>{{patient.getTelephone()}}</td>
+                <td>{{patient.getVille()}}</td>
+                <td>{{patient.getQuartier()}}</td>
+                <td>
+                    <a href="{{path('update_ActionPatient',{'id': patient.id})}}">modifier</a>
+                    <a href="{{path('patient_show',{'id':patient.id})}}">voir</a>
+                    <a href="{{path('patient_delete',{'id':patient.id})}}">supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            
+        
+        </tbody>
+    </table>
+
+{% endblock %}

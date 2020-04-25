@@ -20,15 +20,13 @@
         {% for medecin in medecins %}
             <tr>
                 <th scope="row">{{medecin.id}}</th>
-                <td>{{medecin.nom_med}}</td>
-                <td>{{medecin.prenom_med}}</td>
-                <td>{{medecin.specialiste}}</td>
-                <td>{{medecin.localisation}}</td>
-                <td>{{medecin.visualiser}}</td>
-                <td>{{medecin.patients}}</td>
+                <td>{{medecin.getNomMed()}}</td>
+                <td>{{medecin.getPrenomMed()}}</td>
+                <td>{{medecin.getSpecialite()}}</td>
+                <td>{{medecin.getLocalisation()}}</td>
                 <td>
                     <a href="{{path('update_ActionMedecin',{'id': medecin.id})}}">modifier</a>
-                    <a href="{{path('medecins_show',{'id':medecin.id})}}">voir</a>
+                    <a href="{{path('medecin_show',{'id':medecin.id})}}">voir</a>
                     <a href="{{path('medecin_delete',{'id':medecin.id})}}">supprimer</a>
                 </td>
             </tr>

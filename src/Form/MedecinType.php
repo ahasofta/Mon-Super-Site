@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Medecin;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MedecinType extends AbstractType
@@ -16,8 +17,7 @@ class MedecinType extends AbstractType
             ->add('prenom_med')
             ->add('specialite')
             ->add('localisation')
-            ->add('visualiser')
-            ->add('patients')
+            
         ;
     }
 

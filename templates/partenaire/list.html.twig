@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block title %}Service |liste des partenaire{% endblock %}
+{% block body %}
+<h1>la liste des partenaires<h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">num rendez-vous</th>
+                <th scope="col">nom</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partenaire in partenaires %}
+            <tr>
+                <th scope="row">{{partenaire.id}}</th>
+                <td>{{partenaire.getIdPartenaire()}}</td>
+                <td>{{partenaire.getNomPartenaire()}}</td>
+                <td>
+                    <a href="{{path('update_ActionPartenaire',{'id': partenaire.id})}}">modifier</a>
+                    <a href="{{path('partenaire_show',{'id':partenaire.id})}}">voir</a>
+                    <a href="{{path('partenaire_delete',{'id':partenaire.id})}}">supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            
+        
+        </tbody>
+    </table>
+
+{% endblock %}

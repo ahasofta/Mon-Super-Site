@@ -17,7 +17,7 @@ class MedecinController extends Controller
      * @Route("/admin/update/{id}/medecin" , name="update_ActionMedecin")
      * @Route("/admin/new/medecin", name="create_ActionMedecin")
      */
-    public function ActionMedcin (Request $request, Medecin $medecin=NULL, ObjectManager $manger){
+    public function actionMedcin (Request $request, Medecin $medecin=NULL, ObjectManager $manger){
         
         if (!$medecin) {
             $medecin = new Medecin();
@@ -50,7 +50,7 @@ class MedecinController extends Controller
         ]);
     }
     /**
-     *@Route("/admin/medecins/{id}/show", name="medecins_show")
+     *@Route("/admin/medecins/{id}/show", name="medecin_show")
      */
     public function show(Medecin $medecin){
         

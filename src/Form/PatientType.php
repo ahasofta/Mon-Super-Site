@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Patient;
+use App\Entity\Medecin;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PatientType extends AbstractType
@@ -22,8 +24,6 @@ class PatientType extends AbstractType
             ->add('telephone')
             ->add('ville')
             ->add('quartier')
-            ->add('consulter')
-            ->add('partenaire')
         ;
     }
 
