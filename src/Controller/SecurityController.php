@@ -20,7 +20,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/", name="login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils)
     {
          if ($this->getUser()) {
            
@@ -68,5 +68,4 @@ class SecurityController extends AbstractController
              return $this->render('projets/login.html.twig');
          }
      }
-
 }
