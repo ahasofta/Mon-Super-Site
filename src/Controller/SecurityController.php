@@ -8,13 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
-<<<<<<< HEAD
-
-    {    
-    /**
-=======
-{    
-    
+ {   
     /**
      * @Route("/administateur", name="administrateur")
      */
@@ -24,8 +18,6 @@ class SecurityController extends AbstractController
         ]);
     }
     /**
-
->>>>>>> ff5ca654aa1edaa135f63e83f201afdd7316b165
      * @Route("/", name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -45,35 +37,36 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    /**
+    /** 
      * @Route("/logout", name="logout")
      */
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+   
     /**
      * @Route("/home/redirect")
      */
-    // public function redirection(){
+    public function redirection(){
         
-        // $authChecker = $this->container->get('security.authorization_checker');
+         $authChecker = $this->container->get('security.authorization_checker');
 
-        // if($authChecker->isGranted('ROLE_ADMIN')){
+         if($authChecker->isGranted('ROLE_ADMIN')){
 
-            // return $this->render('');
+            return $this->render('');
 
-        // }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
+         }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
 
-            // return $this->render('projets/medecin.html.twig') ;
+             return $this->render('projets/medecin.html.twig') ;
 
-        // }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
+         }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
 
-            // return $this->render('projets/partainer.html.twig');
+             return $this->render('projets/partainer.html.twig');
 
-        // }else {
-            // return $this->render('projets/login.html.twig');
-        // }
-    // }
+         }else {
+             return $this->render('projets/login.html.twig');
+         }
+     }
 
 }
