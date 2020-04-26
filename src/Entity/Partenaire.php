@@ -28,15 +28,6 @@ class Partenaire
      */
     private $nom_partenaire;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\patient", mappedBy="partenaire")
-     */
-    private $concevoir;
-
-    public function __construct()
-    {
-        $this->concevoir = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -67,34 +58,5 @@ class Partenaire
         return $this;
     }
 
-    /**
-     * @return Collection|patient[]
-     */
-    public function getConcevoir(): Collection
-    {
-        return $this->concevoir;
-    }
-
-    public function addConcevoir(patient $concevoir): self
-    {
-        if (!$this->concevoir->contains($concevoir)) {
-            $this->concevoir[] = $concevoir;
-            $concevoir->setPartenaire($this);
-        }
-
-        return $this;
-    }
-
-    public function removeConcevoir(patient $concevoir): self
-    {
-        if ($this->concevoir->contains($concevoir)) {
-            $this->concevoir->removeElement($concevoir);
-            // set the owning side to null (unless already changed)
-            if ($concevoir->getPartenaire() === $this) {
-                $concevoir->setPartenaire(null);
-            }
-        }
-
-        return $this;
-    }
+   
 }

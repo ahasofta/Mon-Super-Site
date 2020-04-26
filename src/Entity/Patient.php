@@ -68,20 +68,7 @@ class Patient
      */
     private $quartier;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\medecin", inversedBy="patients")
-     */
-    private $consulter;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Partenaire", inversedBy="concevoir")
-     */
-    private $partenaire;
-
-    public function __construct()
-    {
-        $this->consulter = new ArrayCollection();
-    }
+   
 
     public function getId(): ?int
     {
@@ -208,41 +195,4 @@ class Patient
         return $this;
     }
 
-    /**
-     * @return Collection|medecin[]
-     */
-    public function getConsulter(): Collection
-    {
-        return $this->consulter;
-    }
-
-    public function addConsulter(medecin $consulter): self
-    {
-        if (!$this->consulter->contains($consulter)) {
-            $this->consulter[] = $consulter;
-        }
-
-        return $this;
-    }
-
-    public function removeConsulter(medecin $consulter): self
-    {
-        if ($this->consulter->contains($consulter)) {
-            $this->consulter->removeElement($consulter);
-        }
-
-        return $this;
-    }
-
-    public function getPartenaire(): ?Partenaire
-    {
-        return $this->partenaire;
-    }
-
-    public function setPartenaire(?Partenaire $partenaire): self
-    {
-        $this->partenaire = $partenaire;
-
-        return $this;
-    }
 }

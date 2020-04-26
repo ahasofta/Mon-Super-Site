@@ -8,9 +8,24 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
+<<<<<<< HEAD
 
     {    
     /**
+=======
+{    
+    
+    /**
+     * @Route("/administateur", name="administrateur")
+     */
+    public function dehashbord(){
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'SecurityController',
+        ]);
+    }
+    /**
+
+>>>>>>> ff5ca654aa1edaa135f63e83f201afdd7316b165
      * @Route("/", name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
