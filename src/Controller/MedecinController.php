@@ -31,7 +31,7 @@ class MedecinController extends Controller
             $manger->flush();
             $this->addFlash('succes','l\enregistrement a été bien reçu');
         }else {
-            $this->addFlash( 'danger','Reéssaye encore');
+            $this->addFlash( 'danger','Reéssaye encore!!');
         }
         dump($request);
         return $this->render("medecin/action_form.html.twig",[
