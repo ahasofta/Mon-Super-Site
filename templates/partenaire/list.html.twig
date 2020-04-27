@@ -1,8 +1,9 @@
 {% extends "base.html.twig" %}
 {% block title %}Service | Liste des partenaire{% endblock %}
 {% block body %}
+
 <div class="container mt-4">
-<h1>La liste des partenaires<h1>
+<h1>Il y a <em>"{{partenaires | length }}"</em> partenaires enregistré<h1>>
 </div>
     <table class="table container table table-bordered">
         <thead class="thead-light">

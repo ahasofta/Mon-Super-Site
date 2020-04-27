@@ -2,9 +2,12 @@
 {% block title %}Service | Listes des patients{% endblock %}
 {% block body %}
 <div class="container mt-4">
-<h1>La liste des patients<h1>
+<h1>Il y a <em>"{{patients | length }}"</em> patients enregistré<h1>
 </div>
     <table class="table container table table-bordered">
+
+
+
         <thead class="thead-light">
             <tr>
                 <th scope="col">N°</th>

@@ -1,6 +1,9 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
+        App\Entity\Admin:
+            algorithm: argon2i
+
 
     role_hierarchy:
         ROLE_USER: [ROLE_MEDECIN, ROLE_PARTENAIRE]
@@ -11,6 +14,11 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         fos_userbundle:
             id: fos_user.user_provider.username
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\Admin
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
