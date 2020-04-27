@@ -1,19 +1,19 @@
 {% extends "base.html.twig" %}
-{% block title %}Service |liste des medecins{% endblock %}
+{% block title %}Service | Liste des medecins{% endblock %}
 {% block body %}
-<h1>la liste des utilisateurs<h1>
-
-    <table class="table">
+<div class="container mt-4">
+<h1>La liste des médecins<h1>
+</div>
+    <table class="table container table table-bordered">
         <thead class="thead-light">
             <tr>
-                <th scope="col">Id</th>
+                <th scope="col">N°</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">Specialiste</th>
-                <th scope="col">Localisation</th>
-                <th scope="col">utilisateur</th>
-                <th scope="col">patients</th>
-                <th scope="col">actions</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Specialité</th>
+                <th scope="col">Localisation</th>        
+                <th scope="col">Actions</th>
+                <th scope="col">Utilisateur</th>
             </tr>
         </thead>
         <tbody>
@@ -25,14 +25,12 @@
                 <td>{{medecin.getSpecialite()}}</td>
                 <td>{{medecin.getLocalisation()}}</td>
                 <td>
-                    <a href="{{path('update_ActionMedecin',{'id': medecin.id})}}">modifier</a>
-                    <a href="{{path('medecin_show',{'id':medecin.id})}}">voir</a>
-                    <a href="{{path('medecin_delete',{'id':medecin.id})}}">supprimer</a>
+                    <a href="{{path('update_ActionMedecin',{'id': medecin.id})}}" class="btn btn-primary">Modifier</a>
+                    <a href="{{path('medecin_show',{'id':medecin.id})}}" class="btn btn-info">Voir</a>
+                    <a href="{{path('medecin_delete',{'id':medecin.id})}}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
-        {% endfor %}
-            
-        
+        {% endfor %}                
         </tbody>
     </table>
 

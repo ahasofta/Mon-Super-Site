@@ -1,22 +1,24 @@
 {% extends "base.html.twig" %}
-{% block title %}Service |liste des medecins{% endblock %}
+{% block title %}Service | Listes des patients{% endblock %}
 {% block body %}
-<h1>la liste des utilisateurs<h1>
-
-    <table class="table">
+<div class="container mt-4">
+<h1>La liste des patients<h1>
+</div>
+    <table class="table container table table-bordered">
         <thead class="thead-light">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">num rendez-vous</th>
-                <th scope="col">genre</th>
-                <th scope="col">nom patient</th>
-                <th scope="col">prenom patient</th>
-                <th scope="col">date naiss</th>
-                <th scope="col">mutuelle</th>
-                <th scope="col">date rendez</th>
-                <th scope="col">ville</th>
-                <th scope="col">quartier</th>
-                <th scope="col">actions</th>
+                <th scope="col">N°</th>
+                <th scope="col">N°rdv</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Naissance</th>
+                <th scope="col">Mutuelle</th>
+                <th scope="col">Date rdv</th>
+                 <th scope="col">Téléphone</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Quartier</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,9 +36,9 @@
                 <td>{{patient.getVille()}}</td>
                 <td>{{patient.getQuartier()}}</td>
                 <td>
-                    <a href="{{path('update_ActionPatient',{'id': patient.id})}}">modifier</a>
-                    <a href="{{path('patient_show',{'id':patient.id})}}">voir</a>
-                    <a href="{{path('patient_delete',{'id':patient.id})}}">supprimer</a>
+                    <a href="{{path('update_ActionPatient',{'id': patient.id})}}">Modifier</a>
+                    <a href="{{path('patient_show',{'id':patient.id})}}">Voir</a>
+                    <a href="{{path('patient_delete',{'id':patient.id})}}">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

@@ -1,52 +1,48 @@
 {% extends "base.html.twig" %}
-{% block title %}Service | Medecin{% endblock %}
+{% block title %}Service | Médecin{% endblock %}
 {% block body %}
- <h1>Bienvenu,{% if editMode %}Modifier un Medecin{% else %} Ajouter un Medecin{% endif %} </h1>
- <div class="col-12">
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success"> {{message}} </div> 
-    {% endfor %}
-        {% for message in app.flashes('danger') %}
-    <div class="alert alert-danger"> {{message}} </div> 
-    {% endfor %}
+<div class="container mt-4">
+ <h1>{% if editMode %}Modifier un Médecin{% else %} Ajouter un nouveau médecin{% endif %} </h1>
  </div>
+ 
 <section id="page-sx">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="post-box">
                       {{form_start(formMedecin,{'method':'POST'})}} 
+                      <br>
                             <fieldset >
-                                <legend >Informations personnelles</legend>
+                                <legend >Renseigner ces informations</legend>
                                <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formMedecin.nom_med, {'label':'Nom','attr': {'placeholder':"nom "}})}}
+                                    {{form_row(formMedecin.nom_med, {'label':'Nom','attr': {'placeholder':"Nom "}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formMedecin.prenom_med, {'label':'Prénom','attr':{'placeholder':"prenom"}})}}
+                                    {{form_row(formMedecin.prenom_med, {'label':'Prénom','attr':{'placeholder':"Prénom"}})}}
                             
                                     </div>
                                 </div>
                                 <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formMedecin.specialite, {'label':'specialite','attr': {'placeholder':"specialite "}})}}
+                                    {{form_row(formMedecin.specialite, {'label':'Specialité','attr': {'placeholder':"Specialité "}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formMedecin.localisation, {'label':'localisation','attr':{'placeholder':"localisation"}})}}
+                                    {{form_row(formMedecin.localisation, {'label':'Localisation','attr':{'placeholder':"Localisation"}})}}
                             
                                     </div>
                                 </div>
   
                             <fieldset >
                               
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success">{% if editMode %} Modification{% else %} Ajouter{% endif %}</button>
+                            <div class="">
+                                <button type="submit" class="btn btn-primary col-5">{% if editMode %} Modification{% else %} Ajouter{% endif %}</button>
                             </div>
                         {{form_end(formMedecin)}} 
 {% endblock %}

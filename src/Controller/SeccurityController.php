@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SeccurityController extends AbstractController
  {   
     /**
-     * @Route("/administateur", name="administrateur")
+     * @Route("/admin", name="admin_home")
      */
     public function dehashbord(){
         return $this->render('admin/index.html.twig', [

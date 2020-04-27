@@ -1,6 +1,22 @@
 {% extends "base.html.twig" %}
 {% block title %}Service | detaille |Patenaire{% endblock %}
 {% block body %}
-<h1>detaille du Partenaire</h1>
+<div class="container mt-4">
+<h1>Detaille du Partenaire</h1>
+<table class="container mt-4 table table-bordered">
+<tr scope="row">
+<td> N°ID</td>
+<td>{{partenaire.id}}</td>
+</tr>
+<tr>
+<td>N°rdv</td>
+<td>{{partenaire.getIdPartenaire()}}</td>
+</tr>
+<tr>
+<td>Nom du partenaire</td>
+<td>{{partenaire.getNomPartenaire()}}</td>
+</tr>
+</div>
+</table>
 
 {% endblock %}

@@ -1,6 +1,29 @@
 {% extends "base.html.twig" %}
 {% block title %}Service | detaille |Medecin{% endblock %}
 {% block body %}
-<h1>detaille du Medecin</h1>
-
+<div class="container mt-4">
+<h1>Detaille du Medecin</h1>
+<table class="table table-bordered">
+<tr>
+<td> N°ID</td>
+<td>{{medecin.id}}</td>
+</tr>
+<tr>
+<td>Nom</td>
+<td>{{medecin.getNomMed()}}</td>
+</tr>
+<tr>
+<td>Prénom</td>
+<td>{{medecin.getPrenomMed()}}</td>
+</tr>
+<tr>
+<td>Specialité</td>
+<td>{{medecin.getSpecialite()}}</td>
+</tr>
+<tr>
+<td>Localisation</td>
+<td>{{medecin.getLocalisation()}}</td>
+</tr>
+</table>
+</div>
 {% endblock %}

@@ -1,28 +1,24 @@
 {% extends "base.html.twig" %}
 {% block title %}Service | Patient{% endblock %}
 {% block body %}
- <h1>Bienvenu,{% if editMode %}Modifier un Patient{% else %}  Ajouter un Patient{% endif %} </h1>
- <div class="col-12">
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success"> {{message}} </div> 
-    {% endfor %}
-        {% for message in app.flashes('danger') %}
-    <div class="alert alert-danger"> {{message}} </div> 
-    {% endfor %}
+<div class="container mt-4">
+ <h1>{% if editMode %}Modifier un Patient{% else %}  Ajouter un nouveau patient{% endif %} </h1>
  </div>
+ 
 <section id="page-sx">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="post-box">
                       {{form_start(formPatient,{'method':'POST'})}} 
+                      <br>
                             <fieldset >
                                 <legend >Informations personnelles</legend>
                                 <div class="form-row align-items-end">
                                     
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formPatient.num_unique_rdz, {'label':'mumero  rendez-vous','attr':{'placeholder':"mumero  rendez-vous"}})}}
+                                    {{form_row(formPatient.num_unique_rdz, {'label':'Numéro  rendez-vous','attr':{'placeholder':"Numéro  rendez-vous"}})}}
                             
                                     </div>
                                    
@@ -35,56 +31,56 @@
                                 <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formPatient.nom_patient, {'label':'nom','attr': {'placeholder':"nom "}})}}
+                                    {{form_row(formPatient.nom_patient, {'label':'Nom','attr': {'placeholder':"Nom "}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formPatient.prenom_patient, {'label':'prenom','attr':{'placeholder':"prenom"}})}}
+                                    {{form_row(formPatient.prenom_patient, {'label':'Prénom','attr':{'placeholder':"Prénom"}})}}
                             
                                     </div>
                                 </div>
                                 <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formPatient.date_naissance, {'label':'date de naissance','attr': {'placeholder':"date de naissance"}})}}
+                                    {{form_row(formPatient.date_naissance, {'label':'Date de naissance','attr': {'placeholder':"Date de naissance"}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formPatient.mutuelle, {'label':'mutuelle','attr':{'placeholder':"mutuelle"}})}}
+                                    {{form_row(formPatient.mutuelle, {'label':'Mutuelle','attr':{'placeholder':"Mutuelle"}})}}
                             
                                     </div>
                                 </div>
                                 <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formPatient.date_rdz, {'label':'date rendez-vous','attr': {'placeholder':"date rendez-vous"}})}}
+                                    {{form_row(formPatient.date_rdz, {'label':'Date rendez-vous','attr': {'placeholder':"Date rendez-vous"}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formPatient.telephone, {'label':'telephone','attr':{'placeholder':"telephone"}})}}
+                                    {{form_row(formPatient.telephone, {'label':'Téléphone','attr':{'placeholder':"Téléphone"}})}}
                             
                                     </div>
                                 </div>
                                 <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formPatient.ville, {'label':'ville','attr': {'placeholder':"ville"}})}}
+                                    {{form_row(formPatient.ville, {'label':'Ville','attr': {'placeholder':"Ville"}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formPatient.quartier, {'label':'quartier','attr':{'placeholder':"quartiellier"}})}}
+                                    {{form_row(formPatient.quartier, {'label':'Quartier','attr':{'placeholder':"Quartier"}})}}
                             
                                     </div>
                                 </div>
                                 
                             <fieldset >
                               
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success">{% if editMode %}Modification {% else %}Ajouter  {% endif %}</button>
+                            <div class="">
+                                <button type="submit" class="btn btn-primary col-5">{% if editMode %}Modification {% else %}Ajouter  {% endif %}</button>
                             </div>
                         {{form_end(formPatient)}} 
 {% endblock %}

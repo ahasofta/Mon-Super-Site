@@ -1,40 +1,35 @@
 {% extends "base.html.twig" %}
 {% block title %}Service | Partenaire{% endblock %}
 {% block body %}
- <h1>Bienvenu,{% if editMode %}Modifier un Partenaire {% else %} Ajouter un Partenaire{% endif %} </h1>
- <div class="col-12">
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success"> {{message}} </div> 
-    {% endfor %}
-        {% for message in app.flashes('danger') %}
-    <div class="alert alert-danger"> {{message}} </div> 
-    {% endfor %}
+<div class="container mt-4">
+ <h1>{% if editMode %}Modifier un Partenaire {% else %} Ajouter un nouveau partenaire{% endif %} </h1>
  </div>
 <section id="page-sx">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="post-box">
-                      {{form_start(formPartenaire,{'method':'POST'})}} 
+                      {{form_start(formPartenaire,{'method':'POST'})}}
+                      <br> 
                             <fieldset >
-                                <legend >Informations personnelles</legend>
+                                <legend >Renseigner ces informations</legend>
                                <div class="form-row align-items-end">
                                     <div class="form-group col-md-5">
                                         
-                                    {{form_row(formPartenaire.id_partenaire, {'label':'numero partenaire ','attr': {'placeholder':"numero partenaire "}})}}
+                                    {{form_row(formPartenaire.id_partenaire, {'label':'Numéro (ID) partenaire ','attr': {'placeholder':"Numéro partenaire "}})}}
                             
                                     </div>
                                     <div class="form-group col-md-6">
                                         
-                                    {{form_row(formPartenaire.nom_partenaire, {'label':'Prénom','attr':{'placeholder':"prenom"}})}}
+                                    {{form_row(formPartenaire.nom_partenaire, {'label':'Nom du partenaire','attr':{'placeholder':"Nom du partenaire"}})}}
                             
                                     </div>
                                 </div>
                                
                             <fieldset >
                               
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success">{% if editMode %}Modification{% else %}Ajouter  {% endif %}</button>
+                            <div class="">
+                                <button type="submit" class="btn btn-primary col-5">{% if editMode %}Modification{% else %}Ajouter  {% endif %}</button>
                             </div>
                         {{form_end(formPartenaire)}} 
 {% endblock %}

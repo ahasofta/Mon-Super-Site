@@ -1,15 +1,17 @@
 {% extends "base.html.twig" %}
-{% block title %}Service |liste des partenaire{% endblock %}
+{% block title %}Service | Liste des partenaire{% endblock %}
 {% block body %}
-<h1>la liste des partenaires<h1>
-
-    <table class="table">
+<div class="container mt-4">
+<h1>La liste des partenaires<h1>
+</div>
+    <table class="table container table table-bordered">
         <thead class="thead-light">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">num rendez-vous</th>
-                <th scope="col">nom</th>
-                <th scope="col">actions</th>
+                <th scope="col">N°</th>
+                <th scope="col">N°rdv</th>
+                <th scope="col">Nom du partenaire</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Utilisateur</th>
             </tr>
         </thead>
         <tbody>
@@ -19,10 +21,11 @@
                 <td>{{partenaire.getIdPartenaire()}}</td>
                 <td>{{partenaire.getNomPartenaire()}}</td>
                 <td>
-                    <a href="{{path('update_ActionPartenaire',{'id': partenaire.id})}}">modifier</a>
-                    <a href="{{path('partenaire_show',{'id':partenaire.id})}}">voir</a>
-                    <a href="{{path('partenaire_delete',{'id':partenaire.id})}}">supprimer</a>
+                    <a href="{{path('update_ActionPartenaire',{'id': partenaire.id})}}">Modifier</a>
+                    <a href="{{path('partenaire_show',{'id':partenaire.id})}}">Voir</a>
+                    <a href="{{path('partenaire_delete',{'id':partenaire.id})}}">Supprimer</a>
                 </td>
+                
             </tr>
         {% endfor %}
             

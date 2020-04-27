@@ -29,7 +29,7 @@ class MedecinController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $manger->persist($medecin);
             $manger->flush();
-            $this->addFlash('succes','l\enregistrement a été bien reçu');
+            $this->addFlash('succes','l\'enregistrement a été bien reçu');
         }else {
             $this->addFlash( 'danger','Reéssaye encore');
         }
