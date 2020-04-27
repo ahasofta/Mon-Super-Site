@@ -40,7 +40,7 @@ class PartenaireController extends Controller
         ]);
     }
     /**
-     *@Route("/admin/partenaire/list", name="partenaire_list")
+     *@Route("/admin/partenaires/list", name="partenaires_list")
      */
     public function list(PartenaireRepository $rep){
         $partenaireAll = $rep->findAll();
@@ -66,6 +66,6 @@ class PartenaireController extends Controller
 
        $manger->remove($partenaire);
        $manger->flush();
-       return $this->redirectToRoute("partenaire_list");
+       return $this->redirectToRoute("partenaires_list");
     }
 }

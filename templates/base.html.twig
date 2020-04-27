@@ -28,11 +28,21 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{{path('create_ActionUser')}}">ajouter</a>
+          <a class="dropdown-item" href="{{path('users_list')}}">liste</a>
+        
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Medecins
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="{{path('create_ActionMedecin')}}">ajouter</a>
-          <a class="dropdown-item" href="{{path('medecins_list')}}">liste</a>
+        <a class="dropdown-item" href="{{path('medecins_list')}}">liste</a>
         
         </div>
       </li>
@@ -52,7 +62,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="{{path('create_ActionPartenaire')}}">ajouter</a>
-          <a class="dropdown-item" href="{{path('partenaire_list')}}">liste</a>
+          <a class="dropdown-item" href="{{path('partenaires_list')}}">liste</a>
         
         </div>
       </li>

@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
 
         }
 
-        for ($j=1; $j <20 ; $j++) { 
+        for ($l=1; $l <20 ; $l++) { 
             $partenaire = new Partenaire();
             $partenaire->setIdPartenaire($faker->postcode)
                         ->setNomPartenaire($faker->name)
@@ -52,6 +52,17 @@ class AppFixtures extends Fixture
                     ->setQuartier($faker->address)
             ;
             $manager->persist($patient);
+
+        }
+        for ($l=1; $l <20 ; $l++) { 
+            $user = new User();
+            $user->setUsername($faker->name)
+                ->setEmail($faker->freeEmail)
+                ->setPassword($faker->name)
+                ->setChoiceroles($faker->randomElement($array = array ('ROLE_ADMIN','ROLE_PARTENAIRE','ROLE_MEDECIN')))
+                ->setEnabled($faker->boolean)
+            ;
+            $manager->persist($user);
 
         }
 

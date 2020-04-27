@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block title %}Service |liste des users{% endblock %}
+{% block body %}
+<h1>Il y a <em>"{{users | length }}"</em> utilisateurs enregistré<h1> 
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Username</th>
+                <th scope="col">email</th>
+                <th scope="col">enable</th>
+                <th scope="col">rôle</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.getUsername()}}</td>
+                <td>{{user.getEmail()}}</td>
+                <td>{{user.enabled}}</td>
+                <td>{{user.getChoiceroles()}}</td>
+                <td>
+                    <a href="{{path('update_ActionUser',{'id': user.id})}}">modifier</a>
+                    <a href="{{path('user_show',{'id':user.id})}}">voir</a>
+                    <a href="{{path('user_delete',{'id':user.id})}}">supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            
+        
+        </tbody>
+    </table>
+
+{% endblock %}
