@@ -17,7 +17,7 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $faker = \Faker\Factory::create('fr_FR');
-        for ($i=1; $i <20 ; $i++) { 
+        for ($i=1; $i <2; $i++) { 
             $medecin = new Medecin();
             $medecin->setNomMed($faker->name)
                     ->setPrenomMed($faker->name)
@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
 
         }
 
-        for ($l=1; $l <20 ; $l++) { 
+        for ($l=1; $l <2 ; $l++) { 
             $partenaire = new Partenaire();
             $partenaire->setIdPartenaire($faker->postcode)
                         ->setNomPartenaire($faker->name)
@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
         }
 
         
-        for ($k=1; $k <20 ; $k++) { 
+        for ($k=1; $k <2 ; $k++) { 
             $patient = new Patient();
             $patient->setNumUniqueRdz($faker->ean8)
                     ->setGenre($faker->randomElement($array = array ('F','M',)) )
@@ -54,7 +54,7 @@ class AppFixtures extends Fixture
             $manager->persist($patient);
 
         }
-        for ($l=1; $l <20 ; $l++) { 
+        for ($l=1; $l <2 ; $l++) { 
             $user = new User();
             $user->setUsername($faker->name)
                 ->setEmail($faker->freeEmail)

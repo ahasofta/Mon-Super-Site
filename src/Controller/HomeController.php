@@ -32,5 +32,5 @@ class HomeController extends Controller
         return $this->render('projets/partenaire.html.twig', [
             'controller_name' => 'HomeController',
         ]);
-    }
+    } 
 }
