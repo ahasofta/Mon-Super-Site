@@ -4,6 +4,14 @@
 <div class="container mt-4">
  <h1>{% if editMode %}Modifier un Partenaire {% else %} Ajouter un nouveau partenaire{% endif %} </h1>
  </div>
+ <div class="col-12">
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success"> {{message}} </div> 
+    {% endfor %}
+        {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger"> {{message}} </div> 
+    {% endfor %}
+ </div>
 <section id="page-sx">
         <div class="container">
             <div class="row">
@@ -22,6 +30,11 @@
                                     <div class="form-group col-md-6">
                                         
                                     {{form_row(formPartenaire.nom_partenaire, {'label':'Nom du partenaire','attr':{'placeholder':"Nom du partenaire"}})}}
+                            
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        
+                                    {{form_row(formPartenaire.user, {'label':"choisissez l'utilisteur",'attr':{'placeholder':"choisissez l'utilisteur"}})}}
                             
                                     </div>
                                 </div>

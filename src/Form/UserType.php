@@ -25,7 +25,7 @@ class UserType extends AbstractType
            // ->add('passwordRequestedAt')
            ->add('roles', ChoiceType::class, [
             'choices' => [
-                'ROLE_MADECIN' => 'ROLE_MADECIN',
+                'ROLE_MEDECIN' => 'ROLE_MEDECIN',
                 'ROLE_PARTENAIRE' => 'ROLE_PARTENAIRE',
                 'ROLE_ADMIN' => 'ROLE_ADMIN'
             ],

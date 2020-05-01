@@ -28,6 +28,11 @@ class Partenaire
      */
     private $nom_partenaire;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="partenaires")
+     */
+    private $user;
+
 
     public function getId(): ?int
     {
@@ -54,6 +59,18 @@ class Partenaire
     public function setNomPartenaire(string $nom_partenaire): self
     {
         $this->nom_partenaire = $nom_partenaire;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

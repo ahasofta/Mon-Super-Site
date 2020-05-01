@@ -12,8 +12,8 @@
                 <th scope="col">Prénom</th>
                 <th scope="col">Specialité</th>
                 <th scope="col">Localisation</th>        
-                <th scope="col">Actions</th>
                 <th scope="col">Utilisateur</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +24,12 @@
                 <td>{{medecin.getPrenomMed()}}</td>
                 <td>{{medecin.getSpecialite()}}</td>
                 <td>{{medecin.getLocalisation()}}</td>
+                <td>
+                   <a href="{{path('user_show',{'id':medecin.user.id})}}"> 
+                    {{medecin.user.getUsername()}} 
+                   <a/>
+                    
+                </td>
                 <td>
                     <a href="{{path('update_ActionMedecin',{'id': medecin.id})}}" class="btn btn-primary">Modifier</a>
                     <a href="{{path('medecin_show',{'id':medecin.id})}}" class="btn btn-info">Voir</a>

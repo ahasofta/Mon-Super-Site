@@ -38,7 +38,20 @@ class Medecin
      */
     private $localisation;
 
-   
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="medecins")
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Patient", mappedBy="medecin")
+     */
+    private $patients;
+
+    public function __construct()
+    {
+        $this->patients = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,5 +105,50 @@ class Medecin
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Patient[]
+     */
+    public function getPatients(): Collection
+    {
+        return $this->patients;
+    }
+
+    public function addPatient(Patient $patient): self
+    {
+        if (!$this->patients->contains($patient)) {
+            $this->patients[] = $patient;
+            $patient->setMedecin($this);
+        }
+
+        return $this;
+    }
+
+    public function removePatient(Patient $patient): self
+    {
+        if ($this->patients->contains($patient)) {
+            $this->patients->removeElement($patient);
+            // set the owning side to null (unless already changed)
+            if ($patient->getMedecin() === $this) {
+                $patient->setMedecin(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 
 }

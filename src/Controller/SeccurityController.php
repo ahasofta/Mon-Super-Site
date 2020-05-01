@@ -19,14 +19,33 @@ class SeccurityController extends AbstractController
     }
 
     /**
+     * @Route("/login")
      * @Route("/", name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils)
     {
-         if ($this->getUser()) {
+        if ($this->getUser()) {
            
-             return $this->redirectToRoute('med');
-         }
+            $authChecker = $this->container->get('security.authorization_checker');
+
+            if($authChecker->isGranted('ROLE_ADMIN')){
+   
+               return $this->render('user/index.html.twig');
+   
+            }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
+   
+                return $this->render('projets/medecin.html.twig') ;
+   
+            }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
+   
+                return $this->render('projets/partainere.html.twig');
+   
+            }else {
+   
+                return $this->render('security/login.html.twig');
+            }
+        }
+         
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -58,7 +77,7 @@ class SeccurityController extends AbstractController
 
          if($authChecker->isGranted('ROLE_ADMIN')){
 
-            return $this->render('projets/medecin.html.twig');
+            return $this->render('user/index.html.twig');
 
          }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
 
@@ -66,11 +85,11 @@ class SeccurityController extends AbstractController
 
          }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
 
-             return $this->render('projets/partainer.html.twig');
+             return $this->render('projets/partainere.html.twig');
 
          }else {
 
-             return $this->render('projets/login.html.twig');
+             return $this->render('security/login.html.twig');
          }
      }
 }

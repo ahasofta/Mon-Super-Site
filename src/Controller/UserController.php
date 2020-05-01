@@ -27,10 +27,12 @@ class UserController extends Controller
         $form->handleRequest($request);  
         
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('succes','l\enregistrement a été bien reçu');
             $manger->persist($user);
             $manger->flush();
-            $this->addFlash('succes','l\enregistrement a été bien reçu');
-        }else {
+            return $this->redirectToRoute('users_list');
+            
+        }elseif($form->isSubmitted() && !$form->isValid()) {
             $this->addFlash( 'danger','Reéssaye encore!!');
         }
         dump($request);

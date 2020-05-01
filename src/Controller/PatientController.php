@@ -30,7 +30,8 @@ class PatientController extends Controller
             $manger->persist($patient);
             $manger->flush();
             $this->addFlash('succes','l\enregistrement a été bien reçu');
-        }else {
+            return $this->redirectToRoute('patients_list');
+        }elseif($form->isSubmitted() && !$form->isValid()) {
             $this->addFlash( 'danger','Reéssaye encore');
         }
         dump($request);
@@ -40,7 +41,7 @@ class PatientController extends Controller
         ]);
     }
     /**
-     *@Route("/admin/patients/list", name="patient_list")
+     *@Route("/admin/patients/list", name="patients_list")
      */
     public function list(PatientRepository $rep){
         $patientAll = $rep->findAll();
@@ -66,6 +67,6 @@ class PatientController extends Controller
 
        $manger->remove($patient);
        $manger->flush();
-       return $this->redirectToRoute("patient_list");
+       return $this->redirectToRoute("patients_list");
     }
 }

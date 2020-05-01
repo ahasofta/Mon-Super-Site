@@ -2,5 +2,35 @@
 {% block title %}Service | detaille |User{% endblock %}
 {% block body %}
 <h1>detaille du User</h1>
+<div class="container mt-4">
+<h1>Detaille du Partenaire</h1>
+<table class="container mt-4 table table-bordered">
+<tr scope="row">
+<td> N°ID</td>
+<td>{{user.id}}</td>
+</tr>
+<tr scope="row">
+<td> username</td>
+<td>{{user.username}}</td>
+</tr>
+<tr scope="row">
+<td> email</td>
+<td>{{user.email}}</td>
+</tr>
+<tr scope="row">
+<td> rôle</td>
+<td>{{user.choiceroles}}</td>
+</tr>
+<tr scope="row">
+<td> Active?</td>
+<td>
+ {% if user.enabled %}
+    <b>Oui</b>
+{% else %}
+    <b>Non</b> 
+{% endif %}</td>
+</tr>
 
+</div>
+</table>
 {% endblock %}

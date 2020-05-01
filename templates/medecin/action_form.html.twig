@@ -4,6 +4,14 @@
 <div class="container mt-4">
  <h1>{% if editMode %}Modifier un Médecin{% else %} Ajouter un nouveau médecin{% endif %} </h1>
  </div>
+ <div class="col-12">
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success"> {{message}} </div> 
+    {% endfor %}
+        {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger"> {{message}} </div> 
+    {% endfor %}
+ </div>
  
 <section id="page-sx">
         <div class="container">
@@ -35,6 +43,11 @@
                                     <div class="form-group col-md-6">
                                         
                                     {{form_row(formMedecin.localisation, {'label':'Localisation','attr':{'placeholder':"Localisation"}})}}
+                            
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        
+                                    {{form_row(formMedecin.user, {'label':'utilisateur','attr':{'placeholder':"Utilisateur"}})}}
                             
                                     </div>
                                 </div>

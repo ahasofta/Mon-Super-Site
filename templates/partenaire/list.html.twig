@@ -3,16 +3,16 @@
 {% block body %}
 
 <div class="container mt-4">
-<h1>Il y a <em>"{{partenaires | length }}"</em> partenaires enregistré<h1>>
+<h1>Il y a <em>"{{partenaires | length }}"</em> partenaires enregistré<h1>
 </div>
     <table class="table container table table-bordered">
         <thead class="thead-light">
             <tr>
                 <th scope="col">N°</th>
                 <th scope="col">N°rdv</th>
-                <th scope="col">Nom du partenaire</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Nom du partenaire</th>    
                 <th scope="col">Utilisateur</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +21,12 @@
                 <th scope="row">{{partenaire.id}}</th>
                 <td>{{partenaire.getIdPartenaire()}}</td>
                 <td>{{partenaire.getNomPartenaire()}}</td>
+                <td>
+                   <a href="{{path('user_show',{'id':partenaire.user.id})}}"> 
+                    {{partenaire.user.getUsername()}} 
+                   <a/>
+                    
+                </td>
                 <td>
                     <a href="{{path('update_ActionPartenaire',{'id': partenaire.id})}}">Modifier</a>
                     <a href="{{path('partenaire_show',{'id':partenaire.id})}}">Voir</a>

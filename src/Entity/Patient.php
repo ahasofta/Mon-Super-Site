@@ -68,7 +68,11 @@ class Patient
      */
     private $quartier;
 
-   
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medecin", inversedBy="patients")
+     */
+    private $medecin;
+
 
     public function getId(): ?int
     {
@@ -191,6 +195,44 @@ class Patient
     public function setQuartier(string $quartier): self
     {
         $this->quartier = $quartier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Medecin[]
+     */
+    public function getMedecins(): Collection
+    {
+        return $this->medecins;
+    }
+
+    public function addMedecin(Medecin $medecin): self
+    {
+        if (!$this->medecins->contains($medecin)) {
+            $this->medecins[] = $medecin;
+        }
+
+        return $this;
+    }
+
+    public function removeMedecin(Medecin $medecin): self
+    {
+        if ($this->medecins->contains($medecin)) {
+            $this->medecins->removeElement($medecin);
+        }
+
+        return $this;
+    }
+
+    public function getMedecin(): ?Medecin
+    {
+        return $this->medecin;
+    }
+
+    public function setMedecin(?Medecin $medecin): self
+    {
+        $this->medecin = $medecin;
 
         return $this;
     }

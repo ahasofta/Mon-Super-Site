@@ -24,6 +24,10 @@ class PatientType extends AbstractType
             ->add('telephone')
             ->add('ville')
             ->add('quartier')
+            ->add('medecin',EntityType::class,[
+                'class'=> Medecin::class,
+                'choice_label'=>'nom_med'
+            ])
         ;
     }
 

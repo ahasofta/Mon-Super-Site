@@ -25,14 +25,16 @@ class MedecinController extends Controller
         
         $form = $this->createForm(MedecinType::class, $medecin);
         $form->handleRequest($request);  
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            $manger->persist($medecin);
-            $manger->flush();
-            $this->addFlash('succes','l\'enregistrement a été bien reçu');
-        }else {
-            $this->addFlash( 'danger','Reéssaye encore!!');
-        }
+        if ($form->isSubmitted() && $form->isValid()){
+
+                $this->addFlash('succes','l\'enregistrement a été bien reçu');
+                $manger->persist($medecin);
+                $manger->flush();
+                return $this->redirectToRoute('medecins_list');
+            }elseif($form->isSubmitted() && !$form->isValid()){
+                $this->addFlash( 'danger','Reéssaye encore!!');
+            }
+       
         dump($request);
         return $this->render("medecin/action_form.html.twig",[
             'formMedecin' => $form->createView(),
