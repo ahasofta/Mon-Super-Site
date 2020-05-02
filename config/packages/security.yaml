@@ -13,7 +13,7 @@ security:
             id: fos_user.user_provider.username
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
-        dev:
+        dev: 
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main: 
@@ -22,7 +22,7 @@ security:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 always_use_default_target_path : true
-                default_target_path: /
+                default_target_path: /home/redirect
                 use_referer : true
 
             logout: true

@@ -6,10 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class SeccurityController extends AbstractController
  {   
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/admin", name="admin_home")
      */
     public function dehashbord(){
@@ -26,24 +28,7 @@ class SeccurityController extends AbstractController
     {
         if ($this->getUser()) {
            
-            $authChecker = $this->container->get('security.authorization_checker');
-
-            if($authChecker->isGranted('ROLE_ADMIN')){
-   
-               return $this->render('user/index.html.twig');
-   
-            }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
-   
-                return $this->render('projets/medecin.html.twig') ;
-   
-            }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
-   
-                return $this->render('projets/partainere.html.twig');
-   
-            }else {
-   
-                return $this->render('security/login.html.twig');
-            }
+           
         }
          
 
@@ -73,23 +58,23 @@ class SeccurityController extends AbstractController
      */
     public function redirection(){
         
-         $authChecker = $this->container->get('security.authorization_checker');
+        $authChecker = $this->container->get('security.authorization_checker');
 
-         if($authChecker->isGranted('ROLE_ADMIN')){
+        if($authChecker->isGranted('ROLE_ADMIN')){
 
-            return $this->render('user/index.html.twig');
+           return $this->render('user/index.html.twig');
 
-         }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
+        }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
 
-             return $this->render('projets/medecin.html.twig') ;
+            return $this->render('projets/medecin.html.twig') ;
 
-         }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
+        }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
 
-             return $this->render('projets/partainere.html.twig');
+            return $this->render('projets/partainere.html.twig');
 
-         }else {
+        }else {
 
-             return $this->render('security/login.html.twig');
-         }
+            return $this->render('security/login.html.twig');
+        }
      }
 }

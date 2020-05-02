@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,7 @@ class HomeController extends Controller
         ]);
     }
     /**
+     * @IsGranted("ROLE_MEDECIN")
      * @Route("/medecin", name="med")
      */
     public function medecin(){
@@ -26,6 +28,7 @@ class HomeController extends Controller
     }
     
     /**
+     * @IsGranted("ROLE_PARTENAIRE")
      * @Route("/partenaire", name="part")
      */
     public function partenaire(){
