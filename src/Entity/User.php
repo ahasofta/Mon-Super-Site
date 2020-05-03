@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
- * @UniqueEntity(fields = {"username"},message ="l'utilisateur existe déja")
+ * @UniqueEntity(fields = {"username"},message ="cet utilisateur existe déja")
  */
 class User extends BaseUser
 {
