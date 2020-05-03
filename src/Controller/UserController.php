@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
      * @Route("/admin/update/{id}/user" , name="update_ActionUser")
      * @Route("/admin/new/user", name="create_ActionUser")
      */
-    public function actionUser (Request $request, User $user=NULL, ObjectManager $manger){
+    public function actionUser (Request $request, User $user=NULL, ObjectManager $manger,UserPasswordEncoderInterface $encoder){
         
         if (!$user) { 
             $user= new User();
@@ -28,6 +29,8 @@ class UserController extends Controller
         
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash('succes','l\enregistrement a été bien reçu');
+            $passwordHash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($passwordHash);
             $manger->persist($user);
             $manger->flush();
             return $this->redirectToRoute('users_list');
