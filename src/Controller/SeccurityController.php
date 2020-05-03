@@ -21,14 +21,13 @@ class SeccurityController extends AbstractController
     }
 
     /**
-     * @Route("/login")
-     * @Route("/", name="login")
+     * @Route("/",name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils)
     {
         if ($this->getUser()) {
            
-           
+           return $this->redirectToRoute('redirect');
         }
          
 
@@ -54,7 +53,7 @@ class SeccurityController extends AbstractController
     }
    
     /**
-     * @Route("/home/redirect")
+     * @Route("/home/redirect", name="redirect")
      */
     public function redirection(){
         
@@ -62,15 +61,15 @@ class SeccurityController extends AbstractController
 
         if($authChecker->isGranted('ROLE_ADMIN')){
 
-           return $this->render('user/index.html.twig');
+          return $this->redirectToRoute('admin_home');
 
         }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
 
-            return $this->render('projets/medecin.html.twig') ;
+            return $this->redirectToRoute('med');
 
-        }elseif ($authChecker->isGranted('ROLE_PARTAINER')) {
+        }elseif ($authChecker->isGranted('ROLE_PARTENAIRE')) {
 
-            return $this->render('projets/partainere.html.twig');
+            return $this->redirectToRoute('part');
 
         }else {
 

@@ -17,6 +17,17 @@ class HomeController extends Controller
             'controller_name' => 'HomeController',
         ]);
     }
+
+     /**
+     * @IsGranted("ROLE_PARTENAIRE")
+     * @Route("/partenaire", name="part")
+     */
+    public function partenaire(){
+        return $this->render('projets/partenaire.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    } 
+    
     /**
      * @IsGranted("ROLE_MEDECIN")
      * @Route("/medecin", name="med")
@@ -27,13 +38,5 @@ class HomeController extends Controller
         ]);
     }
     
-    /**
-     * @IsGranted("ROLE_PARTENAIRE")
-     * @Route("/partenaire", name="part")
-     */
-    public function partenaire(){
-        return $this->render('projets/partenaire.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    } 
+   
 }
