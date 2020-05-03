@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class SeccurityController extends AbstractController
  {   
     /**
-     * @IsGranted("ROLE_ADMIN")
+     * 
      * @Route("/admin", name="admin_home")
      */
     public function dehashbord(){

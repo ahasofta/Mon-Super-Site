@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Medecin;
+use App\Repository\MedecinRepository;
+use App\Repository\PatientRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -29,12 +32,17 @@ class HomeController extends Controller
     } 
     
     /**
-     * @IsGranted("ROLE_MEDECIN")
-     * @Route("/medecin", name="med")
+     * 
+     * @Route("/medecin/", name="med")
      */
-    public function medecin(){
+    public function medecin(PatientRepository $patientRep, MedecinRepository $medecinRep  ){
+
+    // $medecin = $medecin->findBy(['nom_med'=> $medecin]);
+
+     	$infos = $patientRep->findAll();
+
         return $this->render('projets/medecin.html.twig', [
-            'controller_name' => 'HomeController',
+            'infos' => $infos,
         ]);
     }
     
