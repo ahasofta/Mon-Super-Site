@@ -44,32 +44,24 @@
             </tr>
           </thead>
           <tbody>
+          {% if infos is empty %}
+           <tr> <td><i> Aucun patient enregistré</td> </i> </tr>
+          {% else %}
+             {% for info in infos %}
             <tr>
-              <th scope="row">01</th>
-              <td>M</td>
-              <td>Said</td>
-              <td>Ali</td>
-              <td>14/12/2020</td>
-              <td>15-05-2021</td>
-              <td>337 85 79</td>         
-              <td>Moroni</td>
-              <td>Hadoudja</td>
-              <td>Comores telecom</td>
+              <th scope="row">{{info.id}}</th>
+              <td>{{info.getGenre}}</td>
+              <td>{{info.getNomPatient()}}</td>
+              <td>{{info.getPrenomPatient()}}</td>
+              <td>{{info.getDateNaissance() | date("m/d/Y")}} </td>
+              <td>{{info.getDateRdz() | date("m/d/Y")}}</td>
+              <td>{{info.getTelephone()}}</td>         
+              <td>{{info.getVille()}}</td>
+              <td>{{info.getQuartier()}}</td>
+              <td>{% if info.getMutuelle() %}Oui {% else %}Nom{% endif %}</td>
             </tr>
-            <tr>
-              <th scope="row">02</th>
-              <td>M</td>
-              <td>Ahmed</td>
-              <td>Attoumane</td>
-              <td>14/10/1999</td>
-              <td>05-04-2021</td>
-              <td>478 96 87</td>
-              <td>Moroni</td>
-              <td>Hancounou</td>
-              <td>BDC</td>
-              
-              
-            </tr>
+          {% endfor %}
+          {% endif %}
           </tbody>
         </table>
         <br><br>
@@ -78,7 +70,15 @@
 
     <div id="Paris" class="tabcontent">
       <h5>Historique de rendez-vous</h5>
-      <p><small>Aucun patient n'a pris de rendez-vous</small> </p> 
+      <p>
+        <small>
+          {% if infos is  empty %}
+            <tr> <td><i> Aucun patient n'a pris de rendez-vous</td> </i> </tr>
+            {% else %}
+              {{infos | length}} patient(s)
+            {% endif %}
+        </small>
+      </p> 
     </div>
 
     <div id="Tokyo" class="tabcontent">

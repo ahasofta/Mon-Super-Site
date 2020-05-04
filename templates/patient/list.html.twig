@@ -33,7 +33,7 @@
                 <td>{{patient.getNomPatient()}}</td>
                 <td>{{patient.getPrenomPatient()}}</td>
                 <td>{{patient.getDateNaissance()| date('d/m/Y')}}</td>
-                <td>{{patient.getMutuelle()}}</td>
+                <td>{% if patient.getMutuelle() %}Oui {% else %}Nom{% endif %}</td>
                 <td>{{patient.getDateRdz()|date('d/m/Y')}}</td>
                 <td>{{patient.getTelephone()}}</td>
                 <td>{{patient.getVille()}}</td>
