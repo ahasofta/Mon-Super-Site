@@ -13,6 +13,7 @@
                 <th scope="col">Specialité</th>
                 <th scope="col">Localisation</th>        
                 <th scope="col">Utilisateur</th>
+                <th scope="col">patients</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -25,10 +26,26 @@
                 <td>{{medecin.getSpecialite()}}</td>
                 <td>{{medecin.getLocalisation()}}</td>
                 <td>
-                   <a href="{{path('user_show',{'id':medecin.user.id})}}"> 
-                    {{medecin.user.getUsername()}} 
-                   <a/>
+                <a href="{{path('user_show',{'id':medecin.user.id})}}"> 
+                <a/>
                     
+                </td>
+                <td>
+                {% if medecin.patients | length ==0 %}
+                    <i>Aucun </i>
+                {% else %}
+                        {% if medecin.patients | length ==1 %}
+                         {{medecin.patients | length}} Consulté
+                            {% for row in medecin.patients %}
+                                <i>{{row}}</i>
+                                {% endfor %}
+                            {% else %}
+                                {{medecin.patients | length}} Consultés
+                                    {% for row in medecin.patients %}
+                                        <i>{{row}}</i>
+                                    {% endfor %}
+                        {% endif %}
+                {% endif %} 
                 </td>
                 <td>
                     <a href="{{path('update_ActionMedecin',{'id': medecin.id})}}" class="btn btn-primary">Modifier</a>

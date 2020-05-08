@@ -46,7 +46,7 @@ class MedecinController extends Controller
      */
     public function list(MedecinRepository $rep){
         $medecinAll = $rep->findAll();
-
+       
         return $this->render("medecin/list.html.twig",[
             'medecins'=>$medecinAll
         ]);

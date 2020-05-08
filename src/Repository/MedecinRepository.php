@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Medecin;
+use App\Entity\Patient;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +19,16 @@ class MedecinRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Medecin::class);
+    }
+    public function findInfoMedecin(){
+
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->innerJoin('App\Entity\Patient','m', Join::WITH , 'm = p')
+        ;
+
+
+        return $qb->getQuery()->getResult();
     }
 
     // /**

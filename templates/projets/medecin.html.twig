@@ -11,7 +11,7 @@
 
     <div class="container p-2 my-3 mt-4">
     {% if app.user %} 
-      <h1>Bienvenu !&nbsp;{{ app.user.username }}</h1> 
+      <h1>Bienvenu !&nbsp;{{ app.user.username }} </h1> 
     {% endif %} 
     </div>
 
@@ -44,24 +44,29 @@
             </tr>
           </thead>
           <tbody>
-          {% if infos is empty %}
-           <tr> <td><i> Aucun patient enregistré</td> </i> </tr>
+        
+          {% if medecins  is empty %}
+            <tr> <td><i> Aucun patient enregistré</td> </i> </tr>
           {% else %}
-             {% for info in infos %}
-            <tr>
-              <th scope="row">{{info.id}}</th>
-              <td>{{info.getGenre}}</td>
-              <td>{{info.getNomPatient()}}</td>
-              <td>{{info.getPrenomPatient()}}</td>
-              <td>{{info.getDateNaissance() | date("m/d/Y")}} </td>
-              <td>{{info.getDateRdz() | date("m/d/Y")}}</td>
-              <td>{{info.getTelephone()}}</td>         
-              <td>{{info.getVille()}}</td>
-              <td>{{info.getQuartier()}}</td>
-              <td>{% if info.getMutuelle() %}Oui {% else %}Nom{% endif %}</td>
-            </tr>
-          {% endfor %}
-          {% endif %}
+            
+              {% for medecin in medecins %}
+          
+                {% for patient in medecin.patients %}
+                  <tr>
+                    <th scope="row">{{patient.id}}</th>
+                    <td>{{patient.getGenre}}</td>
+                    <td>{{patient.getNomPatient()}}</td>
+                    <td>{{patient.getPrenomPatient()}}</td>
+                    <td>{{patient.getDateNaissance() | date("m/d/Y")}} </td>
+                    <td>{{patient.getDateRdz() | date("m/d/Y")}}</td>
+                    <td>{{patient.getTelephone()}}</td>         
+                    <td>{{patient.getVille()}}</td>
+                    <td>{{patient.getQuartier()}}</td>
+                    <td>{% if patient.getMutuelle() %}Oui {% else %}Nom{% endif %}</td>
+                  </tr>
+                {% endfor %}
+                {% endfor %}   
+              {% endif %}
           </tbody>
         </table>
         <br><br>
@@ -72,11 +77,12 @@
       <h5>Historique de rendez-vous</h5>
       <p>
         <small>
-          {% if infos is  empty %}
-            <tr> <td><i> Aucun patient n'a pris de rendez-vous</td> </i> </tr>
-            {% else %}
-              {{infos | length}} patient(s)
+        {% for medecin in medecins %}
+          {% if medecin.patients is null %}
+            <tr> <td><i> Aucun patient n'a pris de rendez-vous</td> </i> </tr>    
             {% endif %}
+        {% endfor %}
+        <B> {{medecins | length}} </B>Patient(s)
         </small>
       </p> 
     </div>

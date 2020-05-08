@@ -21,7 +21,7 @@ class HomeController extends Controller
         ]);
     }
 
-     /**
+    /**
      * @IsGranted("ROLE_PARTENAIRE")
      * @Route("/partenaire", name="part")
      */
@@ -32,19 +32,19 @@ class HomeController extends Controller
     } 
     
     /**
-     * 
-     * @Route("/medecin/", name="med")
-     */
+    * 
+    * @Route("/medecin/", name="med")
+    */
     public function medecin(PatientRepository $patientRep, MedecinRepository $medecinRep  ){
 
     // $medecin = $medecin->findBy(['nom_med'=> $medecin]);
-
-     	$infos = $patientRep->findAll();
+   //  $medecins = $medecinRep->findInfoMedecin();
+  // $patients = $patientRep->findInfoPatient();
 
         return $this->render('projets/medecin.html.twig', [
-            'infos' => $infos,
+            'medecins' => $medecinRep->findAll(),
         ]);
     }
     
-   
+    
 }

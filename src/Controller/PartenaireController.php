@@ -65,8 +65,8 @@ class PartenaireController extends Controller
      */
     public function delete(Partenaire $partenaire,ObjectManager $manger){
 
-       $manger->remove($partenaire);
-       $manger->flush();
-       return $this->redirectToRoute("partenaires_list");
+        $manger->remove($partenaire);
+        $manger->flush();
+    return $this->redirectToRoute("partenaires_list");
     }
 }

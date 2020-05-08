@@ -21,6 +21,7 @@
                  <th scope="col">Téléphone</th>
                 <th scope="col">Ville</th>
                 <th scope="col">Quartier</th>
+                <th scope="col">Medicin</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -38,6 +39,11 @@
                 <td>{{patient.getTelephone()}}</td>
                 <td>{{patient.getVille()}}</td>
                 <td>{{patient.getQuartier()}}</td>
+                <td>
+                    <a href="{{path('medecin_show',{'id':patient.medecin.id})}}">
+                    {{patient.medecin.getNomMed()}}
+                    </a>
+                </td>
                 <td>
                     <a href="{{path('update_ActionPatient',{'id': patient.id})}}">Modifier</a>
                     <a href="{{path('patient_show',{'id':patient.id})}}">Voir</a>
