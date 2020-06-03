@@ -44,28 +44,28 @@
             </tr>
           </thead>
           <tbody>
-        
-          {% if medecins  is empty %}
-            <tr> <td><i> Aucun patient enregistré</td> </i> </tr>
+        <pre>
+            {{ dump(app.user.medecins) }}
+          </pre>
+          {% if app.users.medecins.patients  is not defined  %}
+          
+            <tr> <td><i> Aucun user enregistré</td> </i> </tr>
           {% else %}
             
-              {% for medecin in medecins %}
-          
-                {% for patient in medecin.patients %}
+                {% for user in app.users.medecins.patients %}
                   <tr>
-                    <th scope="row">{{patient.id}}</th>
-                    <td>{{patient.getGenre}}</td>
-                    <td>{{patient.getNomPatient()}}</td>
-                    <td>{{patient.getPrenomPatient()}}</td>
-                    <td>{{patient.getDateNaissance() | date("m/d/Y")}} </td>
-                    <td>{{patient.getDateRdz() | date("m/d/Y")}}</td>
-                    <td>{{patient.getTelephone()}}</td>         
-                    <td>{{patient.getVille()}}</td>
-                    <td>{{patient.getQuartier()}}</td>
-                    <td>{% if patient.getMutuelle() %}Oui {% else %}Nom{% endif %}</td>
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{user.getGenre}}</td>
+                    <td>{{user.getNomuser()}}</td>
+                    <td>{{user.getPrenomuser()}}</td>
+                    <td>{{user.getDateNaissance() | date("m/d/Y")}} </td>
+                    <td>{{user.getDateRdz() | date("m/d/Y")}}</td>
+                    <td>{{user.getTelephone()}}</td>         
+                    <td>{{user.getVille()}}</td>
+                    <td>{{user.getQuartier()}}</td>
+                    <td>{% if user.getMutuelle() %}Oui {% else %}Nom{% endif %}</td>
                   </tr>
                 {% endfor %}
-                {% endfor %}   
               {% endif %}
           </tbody>
         </table>
@@ -77,12 +77,10 @@
       <h5>Historique de rendez-vous</h5>
       <p>
         <small>
-        {% for medecin in medecins %}
-          {% if medecin.patients is null %}
-            <tr> <td><i> Aucun patient n'a pris de rendez-vous</td> </i> </tr>    
-            {% endif %}
-        {% endfor %}
-        <B> {{medecins | length}} </B>Patient(s)
+        
+            <tr> <td><i> Aucun user n'a pris de rendez-vous</td> </i> </tr>    
+            
+        
         </small>
       </p> 
     </div>

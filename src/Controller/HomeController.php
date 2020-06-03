@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Medecin;
-use App\Repository\MedecinRepository;
+use App\Entity\User;
 use App\Repository\PatientRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -35,14 +34,15 @@ class HomeController extends Controller
     * 
     * @Route("/medecin/", name="med")
     */
-    public function medecin(PatientRepository $patientRep, MedecinRepository $medecinRep  ){
+    public function medecin(){
 
     // $medecin = $medecin->findBy(['nom_med'=> $medecin]);
    //  $medecins = $medecinRep->findInfoMedecin();
-  // $patients = $patientRep->findInfoPatient();
-
+        $userRep= $this->getDoctrine()->getRepository(User::class);
+        $users = $userRep->findAll();
+        dump(app.user.medecins);
         return $this->render('projets/medecin.html.twig', [
-            'medecins' => $medecinRep->findAll(),
+            'users' => $users,
         ]);
     }
     

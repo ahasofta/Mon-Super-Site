@@ -27,6 +27,7 @@
                 <td>{{medecin.getLocalisation()}}</td>
                 <td>
                 <a href="{{path('user_show',{'id':medecin.user.id})}}"> 
+                {{medecin.getUser()}}
                 <a/>
                     
                 </td>
@@ -35,7 +36,7 @@
                     <i>Aucun </i>
                 {% else %}
                         {% if medecin.patients | length ==1 %}
-                         {{medecin.patients | length}} Consulté
+                            {{medecin.patients | length}} Consulté
                             {% for row in medecin.patients %}
                                 <i>{{row}}</i>
                                 {% endfor %}

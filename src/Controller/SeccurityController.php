@@ -9,7 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class SeccurityController extends AbstractController
- {   
+{   
     /**
      * 
      * @Route("/admin", name="admin_home")
@@ -26,21 +26,19 @@ class SeccurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils)
     {
         if ($this->getUser()) {
-           
-           return $this->redirectToRoute('redirect');
+            
+            return $this->redirectToRoute('redirect');
         }
-         
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-       
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-             'error' => $error
+         'error' => $error
              ]);
     }
 
@@ -61,7 +59,7 @@ class SeccurityController extends AbstractController
 
         if($authChecker->isGranted('ROLE_ADMIN')){
 
-          return $this->redirectToRoute('admin_home');
+            return $this->redirectToRoute('admin_home');
 
         }elseif ($authChecker->isGranted('ROLE_MEDECIN')) {
 
